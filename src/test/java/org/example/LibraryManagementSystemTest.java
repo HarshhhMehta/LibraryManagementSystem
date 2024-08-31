@@ -104,5 +104,22 @@ class LibraryManagementSystemTest {
         assertTrue(outContent.toString().contains(expectedOutput));
     }
 
+    @Test
+    public void viewAvailableBooksTest() {
+        // Redirecting System.out to capture the output for assertions
+        ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outContent));
+        // Add a single books
+        lms.addBook(new Book("Atomic Habits", "234-234-234-1255", "James Clear", 2018));
+        // Test When one book is available
+        lms.viewAvailableBooks();
+        String expectedOutput = "Following Books are available with us: \n";
+        assertTrue(outContent.toString().contains(expectedOutput));
+        assertTrue(outContent.toString().contains("Title: Psychology of money"));
+        assertTrue(outContent.toString().contains("Author: Morgan Housel"));
+        assertTrue(outContent.toString().contains("ISBN: 978-085-719-7689"));
+        assertTrue(outContent.toString().contains("PublicationYear: 2020"));
+    }
+
 
 }

@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.model.Book;
 
+import java.time.Year;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -15,7 +16,7 @@ public class LibraryManagementSystem {
     }
 
     public void addBook(Book book) {
-        if (validateTitle(book.getTitle()) && validateAuthor(book.getAuthor())) {
+        if (validateTitle(book.getTitle()) && validateAuthor(book.getAuthor()) && validatePublicationYear(book.getPublicationYear())) {
             availableBooks.add(book);
             System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
         }
@@ -26,6 +27,11 @@ public class LibraryManagementSystem {
     }
     private boolean validateAuthor(String author) throws IllegalArgumentException {
         if (author == null || author.isEmpty()) throw new IllegalArgumentException("Book Author cannot be empty or null!");
+        return true;
+    }
+    private boolean validatePublicationYear(int year) {
+        // considering there are no books in the library older than this year ;)
+        if (year > Year.now().getValue() || year < 100) throw new IllegalArgumentException("Publication year must be between the range of 100 to " + Year.now());
         return true;
     }
 

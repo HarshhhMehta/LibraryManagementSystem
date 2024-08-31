@@ -1,13 +1,10 @@
 package org.example;
 
 import org.example.model.Book;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
+import java.util.*;
 
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class LibraryManagementSystemTest {
     public static final List<Book> availableBooks = LibraryManagementSystem.getAvailableBooks();

@@ -15,11 +15,18 @@ public class LibraryManagementSystem {
     }
 
     public void addBook(Book book) {
-        if (book.getTitle().isEmpty()) {
-            throw new IllegalArgumentException("Book title cannot be empty!");
+        if (validateTitle(book.getTitle()) && validateAuthor(book.getAuthor())) {
+            availableBooks.add(book);
+            System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
         }
-        availableBooks.add(book);
-        System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
+    }
+    private boolean validateTitle(String title) throws IllegalArgumentException{
+        if (title == null || title.isEmpty()) throw new IllegalArgumentException("Book title cannot be empty or null!");
+        return true;
+    }
+    private boolean validateAuthor(String author) throws IllegalArgumentException {
+        if (author == null || author.isEmpty()) throw new IllegalArgumentException("Book Author cannot be empty or null!");
+        return true;
     }
 
 

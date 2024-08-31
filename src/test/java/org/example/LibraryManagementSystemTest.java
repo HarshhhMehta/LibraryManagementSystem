@@ -138,6 +138,14 @@ class LibraryManagementSystemTest {
         assertTrue(borrowedBooks.contains(book));
         assertFalse(availableBooks.contains(book));
     }
+    @Test
+    public void borrowUnavailableBookTest() {
+        Book book = new Book("title", "987-123-123-9811", "author", 2004);
+        // Add a single books
+        lms.addBook(book);
+        assertThrows(IllegalArgumentException.class, () -> lms.borrowBook("654-987-987-9812"),
+                "Trying to borrow an unavailable book should thrown an IllegalArgumentException");
+    }
 
 
 

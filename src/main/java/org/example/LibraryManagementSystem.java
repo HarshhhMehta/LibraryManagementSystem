@@ -16,7 +16,7 @@ public class LibraryManagementSystem {
     }
 
     public void addBook(Book book) {
-        if (validateTitle(book.getTitle()) && validateAuthor(book.getAuthor()) && validatePublicationYear(book.getPublicationYear())) {
+        if (validateTitle(book.getTitle()) && validateAuthor(book.getAuthor()) && validatePublicationYear(book.getPublicationYear()) && validateISBN(book.getISBN())) {
             availableBooks.add(book);
             System.out.println("Book with ISBN " + book.getISBN() + " added successfully!");
         }
@@ -32,6 +32,12 @@ public class LibraryManagementSystem {
     private boolean validatePublicationYear(int year) {
         // considering there are no books in the library older than this year ;)
         if (year > Year.now().getValue() || year < 100) throw new IllegalArgumentException("Publication year must be between the range of 100 to " + Year.now());
+        return true;
+    }
+
+    private boolean validateISBN(String ISBN) throws IllegalArgumentException {
+        if (ISBN == null || ISBN.length() != 16)
+            throw new IllegalArgumentException("ISBN cannot be null or it must have length >= 13!");
         return true;
     }
 

@@ -13,5 +13,21 @@ package org.example.model;
             this.author = author;
             this.publicationYear = publicationYear;
         }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public String getISBN() {
+            return ISBN;
+        }
+
+        public String getAuthor() {
+            return author;
+        }
+
+        public int getPublicationYear() {
+            return publicationYear;
+        }
     }
 

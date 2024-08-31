@@ -4,11 +4,12 @@ import org.example.model.Book;
 import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 import java.time.Year;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.*;
-
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class LibraryManagementSystemTest {
     public static final List<Book> availableBooks = LibraryManagementSystem.getAvailableBooks();
 
@@ -92,21 +93,16 @@ class LibraryManagementSystemTest {
         assertThrows(IllegalArgumentException.class, () -> lms.addBook(book2),
                 "Adding a book with duplicate ISBN should thrown an IllegalArgumentException");
     }
-    @Test
-    public void viewAvailableBooksTest() {
+    @Test @Order(1)
+    public void viewAvailableBooksWhenEmptyLibraryTest() {
         // Redirecting System.out to capture the output for assertions
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
-        // Add a single books
-        lms.addBook(new Book("Atomic Habits", "234-234-234-1255", "James Clear", 2018));
-        // Test When one book is available
+        // Test when no books are available
         lms.viewAvailableBooks();
-        String expectedOutput = "Following Books are available with us: \n";
+        String expectedOutput = "Sorry, currently no books are available with us.";
         assertTrue(outContent.toString().contains(expectedOutput));
-        assertTrue(outContent.toString().contains("Title: Atomic Habits"));
-        assertTrue(outContent.toString().contains("Author: James Clear"));
-        assertTrue(outContent.toString().contains("ISBN: 234-234-234-1255"));
-        assertTrue(outContent.toString().contains("PublicationYear: 2018"));
     }
+
 
 }

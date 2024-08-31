@@ -45,6 +45,11 @@ public class LibraryManagementSystem {
         }
         return true;
     }
+    public void viewAvailableBooks() {
+        if (availableBooks.isEmpty()) {
+            System.out.println("Sorry, currently no books are available with us.");
+        }
+    }
 
 
 }

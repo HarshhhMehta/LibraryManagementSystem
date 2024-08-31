@@ -110,7 +110,7 @@ class LibraryManagementSystemTest {
         ByteArrayOutputStream outContent = new ByteArrayOutputStream();
         System.setOut(new PrintStream(outContent));
         // Add a single books
-        lms.addBook(new Book("Atomic Habits", "234-234-234-1255", "James Clear", 2018));
+        lms.addBook(new Book("Psychology of money", "978-085-719-7689", "Morgan Housel", 2020));
         // Test When one book is available
         lms.viewAvailableBooks();
         String expectedOutput = "Following Books are available with us: \n";

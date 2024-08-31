@@ -49,6 +49,14 @@ public class LibraryManagementSystem {
         if (availableBooks.isEmpty()) {
             System.out.println("Sorry, currently no books are available with us.");
         }
+        System.out.println("Following Books are available with us: \n");
+        for (Book book : availableBooks) {
+            System.out.println(
+                    "Title: " + book.getTitle() + "\n"
+                            + "Author: " + book.getAuthor() + "\n"
+                            + "PublicationYear: " + book.getPublicationYear() + "\n"
+                            + "ISBN: " + book.getISBN() + "\n");
+        }
     }
 
 

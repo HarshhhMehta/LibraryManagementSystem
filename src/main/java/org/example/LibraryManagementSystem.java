@@ -11,9 +11,13 @@ import java.util.List;
 
 public class LibraryManagementSystem {
     private static final List<Book> availableBooks = new ArrayList<>();
+    private static final List<Book> borrowedBooks = new ArrayList<>();
 
     public static List<Book> getAvailableBooks() {
         return Collections.unmodifiableList(availableBooks);
+    }
+    public static List<Book> getBorrowedBooks() {
+        return Collections.unmodifiableList(borrowedBooks);
     }
 
     public void addBook(Book book) {
@@ -57,6 +61,19 @@ public class LibraryManagementSystem {
                             + "Author: " + book.getAuthor() + "\n"
                             + "PublicationYear: " + book.getPublicationYear() + "\n"
                             + "ISBN: " + book.getISBN() + "\n");
+        }
+    }
+    public void borrowBook(String ISBN) {
+        // Using Iterator to safely and efficiently remove the book from the list while iterating it at the same time
+        Iterator<Book> iterator = availableBooks.iterator();
+        while (iterator.hasNext()) {
+            Book book = iterator.next();
+            if (book.getISBN().equals(ISBN)) {
+                iterator.remove();
+                borrowedBooks.add(book);
+                System.out.println("Book with ISBN " + ISBN + " borrowed Successfully!");
+                return;
+            }
         }
     }
 

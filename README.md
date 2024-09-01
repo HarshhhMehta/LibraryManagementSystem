@@ -1,4 +1,4 @@
-# Library Management System in Java (Incubyte Assessment)
+# Library Management System
 
 This straightforward library management system was developed fully with the help of the Test Driven Development (TDD) methodology. Users can carry out simple tasks like adding, borrowing, and reading the books that are available. 
 
